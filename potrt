@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDUFLIX</title>
+    <link rel="stylesheet" href="stylev.css">
+</head>
+<body>
+    <nav class="menu">
+        <a class="logo" href="index.html">
+            <img src="assets/img/logo.svg" alt="Logo">
+            <div>EDUFLIX</div>
+        </a>
+        <div class="side">
+            <div class="options">
+                <a href="#">HOME</a>
+                <a href="#">CURSOS</a>
+                <a href="#">PLANOS</a>
+            </div>
+            <a href="#" class="PFP"><img src="assets/img/pfp.jpg" alt="Profile Picture"></a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="main-content">
+            <!-- Existing content -->
+        </div>
+        <div class="sidebar">
+            <div class="course-info">
+                <h1>Curso</h1>
+                <p>Inteligência emocional, geração de conflitos, comunicação assertiva no trabalho, cooperação e trabalho...</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 30%;"></div>
+                </div>
+            </div>
+            <div class="modules">
+                <h2>MÓDULOS</h2>
+                <ul>
+                    <li>0.1 Teste...</li>
+                </ul>
+            </div>
+            <div class="activities">
+                <h2>ATIVIDADES</h2>
+                <ul>
+                    <li id="video1">Video Aula 1 - 4 min</li>
+                    <li id="video2">Documentação Aula 1</li>
+                    <li id="video3">Atividade Aula 1</li>
+                    <li id="video4">Video Aula 2 - 6 min</li>
+                    <li id="video5">Documentação Aula 2</li>
+                    <li id="video6">Atividade Aula 2</li>
+                </ul>
+            </div>
+            <div class="next-module">
+                <p>Próximo Módulo</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="detailedView" class="detailed-view hidden">
+        <h1 id="videoTitle">Título de vídeo</h1>
+        <div class="video-placeholder"></div>
+        <p id="videoDescription">Descrição</p>
+        <div class="comments">
+            <h2>Comentários</h2>
+            <div class="comment">
+                <p>@UsuárioManeiroGenérico</p>
+                <p>This is something that nobody asked for, but everyone needed. Absolute piece of art.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+css:
+/* Existing CSS */
+.hidden {
+    display: none;
+}
+
+.detailed-view {
+    background-color: #1F1F1F;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+.detailed-view .video-placeholder {
+    background-color: #000;
+    height: 200px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.detailed-view .comments {
+    margin-top: 20px;
+}
+
+.detailed-view .comment {
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+
+java:
+document.addEventListener('DOMContentLoaded', () => {
+    const videoLinks = document.querySelectorAll('.activities ul li');
+    const detailedView = document.getElementById('detailedView');
+    const videoTitle = document.getElementById('videoTitle');
+    const videoDescription = document.getElementById('videoDescription');
+
+    videoLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Update the detailed view content based on the clicked link
+            videoTitle.textContent = link.textContent.split(' - ')[0];
+            videoDescription.textContent = `Descrição para ${link.textContent.split(' - ')[0]}`;
+
+            // Show the detailed view
+            detailedView.classList.remove('hidden');
+        });
+    });
+});
